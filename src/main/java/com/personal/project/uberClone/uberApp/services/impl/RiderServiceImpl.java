@@ -4,6 +4,7 @@ import com.personal.project.uberClone.uberApp.dto.DriverDto;
 import com.personal.project.uberClone.uberApp.dto.RideDto;
 import com.personal.project.uberClone.uberApp.dto.RideRequestDto;
 import com.personal.project.uberClone.uberApp.dto.RiderDto;
+import com.personal.project.uberClone.uberApp.entities.Driver;
 import com.personal.project.uberClone.uberApp.entities.RideRequest;
 import com.personal.project.uberClone.uberApp.entities.Rider;
 import com.personal.project.uberClone.uberApp.entities.User;
@@ -12,8 +13,6 @@ import com.personal.project.uberClone.uberApp.exceptions.ResourceNotFoundExcepti
 import com.personal.project.uberClone.uberApp.repositories.RideRequestRepository;
 import com.personal.project.uberClone.uberApp.repositories.RiderRepository;
 import com.personal.project.uberClone.uberApp.services.RiderService;
-import com.personal.project.uberClone.uberApp.strategies.DriverMatchingStrategy;
-import com.personal.project.uberClone.uberApp.strategies.RideFareCalculationStrategy;
 import com.personal.project.uberClone.uberApp.strategies.RideStrategyManager;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,7 +34,7 @@ public class RiderServiceImpl implements RiderService {
     @Override
     public RideRequestDto requestRide(RideRequestDto rideRequestDto) {
         Rider rider = getCurrentRider();
-
+//        log.info("Rider fetched: {}", rider.getRating());
         RideRequest rideRequest = modelMapper.map(rideRequestDto, RideRequest.class);
         rideRequest.setRideRequestStatus(RideRequestStatus.PENDING);
         rideRequest.setRider(rider);
@@ -44,10 +43,12 @@ public class RiderServiceImpl implements RiderService {
         rideRequest.setFare(fare);
 
         RideRequest savedRideRequest= rideRequestRepository.save(rideRequest);
-
-        rideStrategyManager.driverMatchingStrategy(rider.getRating()).findMatchingDriver(rideRequest);
+        List<Driver> drivers  = rideStrategyManager.driverMatchingStrategy(rider.getRating()).findMatchingDriver(rideRequest);
+//    Send notification to all Drivers
 
         log.info(rideRequest.toString());
+        Rider test = savedRideRequest.getRider();
+        log.info("Rider fetched: {}", test.getRating());
 
         return modelMapper.map(savedRideRequest, RideRequestDto.class);
     }

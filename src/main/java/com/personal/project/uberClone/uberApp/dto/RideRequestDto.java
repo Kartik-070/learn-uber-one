@@ -1,14 +1,10 @@
 package com.personal.project.uberClone.uberApp.dto;
 
-import com.personal.project.uberClone.uberApp.entities.Rider;
 import com.personal.project.uberClone.uberApp.entities.enums.PaymentMethod;
 import com.personal.project.uberClone.uberApp.entities.enums.RideRequestStatus;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.locationtech.jts.geom.Point;
 
 import java.time.LocalDateTime;
 
@@ -24,7 +20,7 @@ public class  RideRequestDto {
     private LocalDateTime requestedTime;
 
     private RiderDto rider ;
-    private double fare;
+    private Double fare;
 
     private PaymentMethod paymentMethod;
 

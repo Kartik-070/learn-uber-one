@@ -1,6 +1,6 @@
 package com.personal.project.uberClone.uberApp.entities.enums;
 
 public enum RideStatus {
-    CANCELLED, CONFIRMED, ENDED, OMGOING
+    CANCELLED, CONFIRMED, ENDED, ONGOING, OMGOING
 //can have Cancelled_DRIVER,  Cancelled_RIDER
 }

@@ -1,6 +1,5 @@
 package com.personal.project.uberClone.uberApp.strategies.impl;
 
-import com.personal.project.uberClone.uberApp.dto.RideRequestDto;
 import com.personal.project.uberClone.uberApp.entities.Driver;
 import com.personal.project.uberClone.uberApp.entities.RideRequest;
 import com.personal.project.uberClone.uberApp.repositories.DriverRepository;

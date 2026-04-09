@@ -4,7 +4,6 @@ import com.personal.project.uberClone.uberApp.dto.DriverDto;
 import com.personal.project.uberClone.uberApp.dto.RideDto;
 import com.personal.project.uberClone.uberApp.dto.RideRequestDto;
 import com.personal.project.uberClone.uberApp.dto.RiderDto;
-import com.personal.project.uberClone.uberApp.entities.RideRequest;
 import com.personal.project.uberClone.uberApp.entities.Rider;
 import com.personal.project.uberClone.uberApp.entities.User;
 
